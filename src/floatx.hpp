@@ -588,8 +588,8 @@ FLOATX_ATTRIBUTES FLOATX_INLINE uint64_t assemble_regular_number(
 {
     // ensure that the mantissa and exp fields to not contain bits at wrong
     // locations.
-    assert((mant & ~MASK_MANTISSA) == 0x0);
-    assert((exp & ~MASK_EXPONENT) == 0x0);
+    // assert((mant & ~MASK_MANTISSA) == 0x0);
+    // assert((exp & ~MASK_EXPONENT) == 0x0);
 
     // Assemble the number from the original sign and the current exp and mant
     // field.
