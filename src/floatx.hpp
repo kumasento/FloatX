@@ -174,7 +174,11 @@ public:
         this->initialize();
     }
 
-    template <typename T>
+    template <typename T,
+              typename std::enable_if<
+                float_traits<T>::is_floatx ||
+                std::is_integral<T>::value ||
+                std::is_floating_point<T>::value, T>::type* = nullptr>
     FLOATX_ATTRIBUTES floatx(const T& other) noexcept
         : detail::floatx_base<floatx>(backend_float(other))
     {
@@ -183,7 +187,11 @@ public:
 
     // Default copy/move constructors/assignment operators are OK here
 
-    template <typename T>
+    template <typename T,
+              typename std::enable_if<
+                float_traits<T>::is_floatx ||
+                std::is_integral<T>::value ||
+                std::is_floating_point<T>::value, T>::type* = nullptr>
     FLOATX_ATTRIBUTES floatx& operator=(const T& other) noexcept
     {
         return *this = floatx(other);
